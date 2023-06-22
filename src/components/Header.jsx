@@ -115,7 +115,7 @@ const Header = (props) => {
               onClick={handleDrawerToggle}
               sx={{ mr: 2, display: { sm: "none" } }}
             >
-              <Menu sx={{ color: "rgb(122,198,77)" }} />
+              <Menu sx={{ color: "#116D6E" }} />
             </IconButton>
             <Typography
               variant="h6"
@@ -159,7 +159,7 @@ const Header = (props) => {
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
               width: drawerWidth,
-              backgroundColor: "rgb(122,198,77)",
+              backgroundColor: "#116D6E",
               color: "#fff",
             },
           }}
