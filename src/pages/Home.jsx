@@ -163,7 +163,7 @@ const Home = () => {
         <Typography
           fontSize={{ xs: "32px", md: "54px" }}
           fontFamily="Josefin Sans, sans-serif"
-          sx={{ marginBottom: ".6em", textAlign: "center" }}
+          sx={{ marginBottom: ".6em", textAlign: "center", color: "#fff" }}
         >
           Faire un don aujourd'hui
         </Typography>
