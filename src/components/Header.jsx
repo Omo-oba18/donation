@@ -204,13 +204,19 @@ const Header = (props) => {
                       color: "#000",
                       fontSize: "12px",
                       fontFamily: "Baskervville SC, serif",
+                      fontWeight: "700",
                     }}
                   >
                     {item.name}
                   </Button>
                 )
               )}
-              <StyledButton ml="3em !important" bgc="#4ACA4D !important">
+              <StyledButton
+                component={Link}
+                to="/contactez-nous"
+                ml="3em !important"
+                bgc="#4ACA4D !important"
+              >
                 Faire un Don
               </StyledButton>
             </Box>

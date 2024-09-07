@@ -29,6 +29,7 @@ const DropdownMenu = ({ title, items }) => {
           textTransform: "uppercase",
           fontSize: "12px",
           fontFamily: "Baskervville SC, serif",
+          fontWeight:"700"
         }}
         endIcon={<KeyboardArrowDownIcon />}
       >
@@ -51,6 +52,7 @@ const DropdownMenu = ({ title, items }) => {
             to={item.link}
             sx={{
               fontFamily: "Baskervville SC, serif",
+              fontWeight:"700"
             }}
           >
             {item.name}

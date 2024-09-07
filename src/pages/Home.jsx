@@ -1,93 +1,25 @@
 import {
   Box,
   Button,
-  FormControl,
   Grid,
-  InputAdornment,
-  InputLabel,
-  OutlinedInput,
   Paper,
   Stack,
-  ToggleButton,
-  ToggleButtonGroup,
   Typography,
 } from "@mui/material";
 import React, { useEffect } from "react";
 import Banner from "../components/Banner";
 import { StyledButton } from "../misc/component";
-import {
-  Business,
-  Construction,
-  LightMode,
-  Storage,
-} from "@mui/icons-material";
-import image_1 from "../assets/images/Hunger-1-530x354.jpg";
-import image_2 from "../assets/images/children-hand-penny.jpg";
-import image_3 from "../assets/images/hunger-relief.jpg";
-import image_4 from "../assets/images/children-orphan-eating.jpg";
+
 import { Helmet } from "react-helmet-async";
 import Aos from "aos";
-import bannerImg from "../assets/images/banner-1.jpg"
+import bannerImg from "../assets/images/banner-1.jpg";
+import { fundraiser, gridItem } from "../api/service";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   // Define the base title and the new title to append
   const baseTitle = "ONG SAVE VIGNON";
   const pageTitle = "Bienvenue | " + baseTitle;
-
-  const gridItem = [
-    {
-      title: "total donation",
-      icon: <LightMode />,
-      text: "Lorem ipsum dolor sit amet consectetur adipisicing.",
-    },
-    {
-      title: "Font reunis",
-      icon: <Storage />,
-      text: "Lorem ipsum dolor sit amet consectetur adipisicing.",
-    },
-    {
-      title: "Don le plus eleves",
-      icon: <Business />,
-      text: "Lorem ipsum dolor sit amet consectetur adipisicing.",
-    },
-    {
-      title: "total donation",
-      icon: <Construction />,
-      text: "Lorem ipsum dolor sit amet consectetur adipisicing.",
-    },
-  ];
-  const [alignment, setAlignment] = React.useState("");
-  
-  const fundraiser = [
-    {
-      title: "Help for cancer victims",
-      price: "23,432",
-      currency: "USD",
-      src: image_1,
-    },
-    {
-      title: "Help for orphan children in unganda",
-      price: "123,432",
-      currency: "EUR",
-      src: image_2,
-    },
-    {
-      title: "Help for pregnant women",
-      price: "63,432",
-      currency: "USD",
-      src: image_3,
-    },
-    {
-      title: "Help for homeless people victims for war",
-      price: "423,432",
-      currency: "USD",
-      src: image_4,
-    },
-  ];
-
-  const handleChange = (event, newAlignment) => {
-    setAlignment(newAlignment);
-  };
 
   useEffect(() => {
     Aos.init({
@@ -100,10 +32,7 @@ const Home = () => {
       <Helmet>
         <title>{pageTitle}</title>
       </Helmet>
-      <Banner
-        height={{ xs: "74vh", sm: "80vh" }}
-        imgUrl={bannerImg}
-      >
+      <Banner height={{ xs: "74vh", sm: "80vh" }} imgUrl={bannerImg}>
         {/* Overlay Layer */}
         <Box
           sx={{
@@ -155,7 +84,7 @@ const Home = () => {
             sx={{ marginTop: "2em" }}
             direction={{ xs: "column", sm: "row" }}
           >
-            <StyledButton bgc="#1f6e8c !important" mbSmall="2em !important">
+            <StyledButton bgc="#4ACA4D !important" mbSmall="2em !important">
               Faire un don
             </StyledButton>
             <StyledButton ml="2em !important" mlSmall="0px !important">
@@ -164,7 +93,7 @@ const Home = () => {
           </Stack>
         </Stack>
       </Banner>
-      <Box sx={{ flexGrow: 1 }}>
+      <Box sx={{ flexGrow: 1 }} data-aos="fade-up">
         <Grid
           container
           spacing={{ xs: 2, md: 3 }}
@@ -203,60 +132,6 @@ const Home = () => {
           ))}
         </Grid>
       </Box>
-      <Stack direction="column" sx={{ background: "#84A7A1", padding: "3em" }}>
-        <Typography
-          fontSize={{ xs: "32px", md: "54px" }}
-          fontFamily="Josefin Sans, sans-serif"
-          sx={{ marginBottom: ".6em", textAlign: "center", color: "#fff" }}
-        >
-          Faire un don aujourd'hui
-        </Typography>
-        <Typography
-          sx={{ marginBottom: "1em", color: "#c9c9c9", textAlign: "center" }}
-        >
-          Les enfants de l'orphelinat Barots attendent de vos mains un don
-          significatif. Faite le geste maintenant pour les soutenir.
-        </Typography>
-        <Box sx={{ background: "#fff", padding: "2em" }}>
-          <ToggleButtonGroup
-            exclusive
-            orientation="vertical"
-            value={alignment}
-            onChange={handleChange}
-            aria-label="Platform"
-            sx={{ width: "100%" }}
-          >
-            <ToggleButton value="10" sx={{ marginBottom: "1em" }}>
-              $10.00
-            </ToggleButton>
-            <ToggleButton value="50" sx={{ marginBottom: "1em" }}>
-              $50.00
-            </ToggleButton>
-            <ToggleButton value="100" sx={{ marginBottom: "1em" }}>
-              $10.00
-            </ToggleButton>
-            <ToggleButton value="250" sx={{ marginBottom: "1em" }}>
-              $250
-            </ToggleButton>
-          </ToggleButtonGroup>
-          <FormControl
-            sx={{ width: "100%", marginBottom: "1em" }}
-            variant="outlined"
-          >
-            <InputLabel htmlFor="outlined-adornment-others">Others</InputLabel>
-            <OutlinedInput
-              endAdornment={<InputAdornment position="end">USD</InputAdornment>}
-              aria-describedby="outlined-weight-helper-text"
-              inputProps={{
-                "aria-label": "weight",
-              }}
-            />
-          </FormControl>
-          <StyledButton bgc="#2E8A99 !important" sx={{ width: "100%" }}>
-            Envoyer
-          </StyledButton>
-        </Box>
-      </Stack>
       <Stack sx={{ background: "#fff", padding: "3em" }}>
         <Typography
           fontSize={{ xs: "32px", md: "54px" }}
@@ -267,8 +142,9 @@ const Home = () => {
           Soutenir une campagne ou une collecte de fonds
         </Typography>
         <Typography textAlign="center">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia corrupti
-          repellat laborum laudantium incidunt impedit.
+          Assurer la couverture des besoins essentiels pour la suivi,
+          principalement la sécurité alimentaire avec une implication effective
+          des partenaires financiers
         </Typography>
         <Box sx={{ flexGrow: 1, paddingTop: "2em" }}>
           <Grid
@@ -366,6 +242,8 @@ const Home = () => {
                 marginBottom: { xs: "1em", sm: "0" },
                 marginRight: { xs: "0", sm: "1em" },
               }}
+              component={Link}
+              to="/contactez-nous"
             >
               Faire une Donation
             </Button>
@@ -383,6 +261,8 @@ const Home = () => {
                 marginTop: { xs: "1em", sm: "0" },
                 marginLeft: { xs: "0", sm: "1em" },
               }}
+              component={Link}
+              to="/contactez-nous"
             >
               collecte de fonds
             </Button>

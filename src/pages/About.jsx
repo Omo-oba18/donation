@@ -1,10 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Banner from "../components/Banner";
 import { Box, Stack, Typography } from "@mui/material";
 import bannerImg from "../assets/images/Hunger-1-530x354.jpg";
 import about1 from "../assets/images/about-img-1.jpg";
-import { margin, width } from "@mui/system";
+import Aos from "aos";
+
+
 const About = () => {
+  useEffect(() => {
+    Aos.init({
+      duration: 1000, // Animation duration in milliseconds
+    });
+  }, []);
+
   return (
     <>
       <Banner height={{ xs: "44vh", sm: "50vh" }} imgUrl={bannerImg}>
@@ -60,6 +68,7 @@ const About = () => {
           sx={{ height: "250px", marginRight: { sm: "3em" } }}
           src={about1}
           alt="a propos de nous"
+          data-aos="fade-right"
         />
         {/*  qui somme nous  */}
         <Box
@@ -68,6 +77,7 @@ const About = () => {
             width: { sm: "450px" },
             marginBottom: { xs: "2em" },
           }}
+          data-aos="fade-left"
         >
           <Typography
             variant="h3"
@@ -117,6 +127,7 @@ const About = () => {
           width: "60%",
           margin: "0 auto",
         }}
+        data-aos="fade-up"
       >
         <Typography
           sx={{ fontFamily: "Lemonada, cursif" }}
@@ -138,6 +149,7 @@ const About = () => {
           et d’enseignements mutuels.
         </Typography>
       </Box>
+
     </>
   );
 };
