@@ -11,7 +11,7 @@ export const StyledButton = styled(Button)`
   color: #fff !important;
   outline: none;
   transition: all 400ms linear 0s;
-  border: 1px solid #1f6e8c !important;
+  border: none;
   padding: 0px 30px !important;
   line-height: 48px !important;
   margin-left: ${(props) => props.ml};

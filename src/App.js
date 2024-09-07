@@ -1,7 +1,5 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import Footer from "./components/Footer";
-import { Suspense, lazy } from "react";
-import Loading from "./components/Loading";
 import {
   Box,
   CssBaseline,
@@ -13,9 +11,8 @@ import {
 import PropTypes from "prop-types";
 import Header from "./components/Header";
 import { KeyboardArrowUp } from "@mui/icons-material";
-const Home = lazy(() => import("./pages/Home"));
-const About = lazy(() => import("./pages/About"));
-const Contact = lazy(() => import("./pages/Contact"));
+import AppRoutes from "./routes/AppRoutes";
+import "aos/dist/aos.css";
 // to go back to up i have implemented the folloing function
 function ScrollTop(props) {
   const { children, window } = props;
@@ -60,13 +57,7 @@ function App(props) {
       <CssBaseline />
       <Header />
       <Toolbar id="back-to-top-anchor" />
-      <Suspense fallback={<Loading />}>
-        <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
-      </Suspense>
+      <AppRoutes />
       <Footer />
       <ScrollTop {...props}>
         <Fab size="small" aria-label="scroll back to top">

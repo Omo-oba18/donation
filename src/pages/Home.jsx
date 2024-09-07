@@ -12,8 +12,8 @@ import {
   ToggleButtonGroup,
   Typography,
 } from "@mui/material";
-import React from "react";
-import LandingImage from "../components/LandingImage";
+import React, { useEffect } from "react";
+import Banner from "../components/Banner";
 import { StyledButton } from "../misc/component";
 import {
   Business,
@@ -25,7 +25,15 @@ import image_1 from "../assets/images/Hunger-1-530x354.jpg";
 import image_2 from "../assets/images/children-hand-penny.jpg";
 import image_3 from "../assets/images/hunger-relief.jpg";
 import image_4 from "../assets/images/children-orphan-eating.jpg";
+import { Helmet } from "react-helmet-async";
+import Aos from "aos";
+import bannerImg from "../assets/images/banner-1.jpg"
+
 const Home = () => {
+  // Define the base title and the new title to append
+  const baseTitle = "ONG SAVE VIGNON";
+  const pageTitle = "Bienvenue | " + baseTitle;
+
   const gridItem = [
     {
       title: "total donation",
@@ -49,6 +57,7 @@ const Home = () => {
     },
   ];
   const [alignment, setAlignment] = React.useState("");
+  
   const fundraiser = [
     {
       title: "Help for cancer victims",
@@ -80,9 +89,33 @@ const Home = () => {
     setAlignment(newAlignment);
   };
 
+  useEffect(() => {
+    Aos.init({
+      duration: 2000, // Animation duration in milliseconds
+    });
+  }, []);
+
   return (
     <Stack>
-      <LandingImage height={{ xs: "74vh", md: "90vh" }}>
+      <Helmet>
+        <title>{pageTitle}</title>
+      </Helmet>
+      <Banner
+        height={{ xs: "74vh", sm: "80vh" }}
+        imgUrl={bannerImg}
+      >
+        {/* Overlay Layer */}
+        <Box
+          sx={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            backgroundColor: "rgba(0, 0, 0, 0.5)", // Dark overlay with adjustable opacity
+            zIndex: 1,
+          }}
+        />
         <Stack
           direction="column"
           sx={{
@@ -90,22 +123,33 @@ const Home = () => {
             alignItems: "center",
             justifyContent: "center",
             padding: "2rem",
+            zIndex: 3,
+            position: "relative",
           }}
         >
           <Typography
             textAlign="center"
-            fontSize={{ xs: "24px", sm: "58px" }}
+            fontSize={{ xs: "42px", sm: "98px" }}
             sx={{
               color: "#fff",
-              marginBottom: ".7em",
-              fontFamily: "Rock salt, cursive",
+              marginBottom: ".4em",
+              fontFamily: "Kaushan Script, cursive",
+            }}
+            data-aos="fade-right"
+          >
+            Soutenir, Soigner et Inspirer
+          </Typography>
+          <Typography
+            data-aos="fade-left"
+            sx={{
+              textAlign: "center",
+              color: "#fff",
+              fontFamily: "Mulish, sans-serif",
+              fontSize: "24px",
             }}
           >
-            Soyons genereux envers nos enfants
-          </Typography>
-          <Typography color="#fff" textAlign="center">
-            Lorem, ipsum dolor Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Ipsam vel fugiat tenetur..
+            Unissons-nous pour nourrir les rêves de ceux qui en ont le plus
+            besoin. <br /> Chaque geste de générosité compte.
           </Typography>
           <Stack
             sx={{ marginTop: "2em" }}
@@ -119,7 +163,7 @@ const Home = () => {
             </StyledButton>
           </Stack>
         </Stack>
-      </LandingImage>
+      </Banner>
       <Box sx={{ flexGrow: 1 }}>
         <Grid
           container

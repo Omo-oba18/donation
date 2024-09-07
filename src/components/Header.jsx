@@ -11,32 +11,77 @@ import {
   ListItemButton,
   ListItemText,
   Toolbar,
-  Typography,
   useScrollTrigger,
 } from "@mui/material";
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { StyledButton } from "../misc/component";
+import logo from "../assets/images/logo-nobg.png";
+import DropdownMenu from "./Dropdown";
+import { RoutePaths } from "../routes/routePaths";
 
 const drawerWidth = 240; //width of the drawer on small screen size
 // variable used for the menu items
+// Header.js
+
 const navItems = [
+  { name: "Accueil", link: RoutePaths.HOME },
+  { name: "Présentation", link: RoutePaths.PRESENTATION },
+  { name: "A Propos", link: RoutePaths.ABOUT },
+  { name: "Galerie", link: RoutePaths.GALERIE },
   {
-    name: "Accueil",
-    link: "/",
+    name: "Nos Activités",
+    items: [
+      {
+        name: "Autonomisation de la fille mère",
+        link: RoutePaths.AUTONOMISATION_FILLE,
+      },
+      {
+        name: "Lutte contre la grossesse et le VIH/ IST en milieu scolaire",
+        link: RoutePaths.LUTTE_GROSSESSE_VIH_IST,
+      },
+      {
+        name: "Remise des kits scolaires aux Orphelins Enfants Vulnérables",
+        link: RoutePaths.REMISE_KITS_SCOLAIRES,
+      },
+      {
+        name: "Octroi de la bourse d'études aux Enfants Vulnérables",
+        link: RoutePaths.BOURSE_ETUDES_ENFANTS,
+      },
+      {
+        name: "Accès à l'éducation pour tous",
+        link: RoutePaths.ACCES_EDUCATION,
+      },
+      { name: "Causerie -Débat", link: RoutePaths.CAUSERIE_DEBAT },
+      {
+        name: "Accès à l'eau et assainissement",
+        link: RoutePaths.ACCES_EAU_ASSAINISSEMENT,
+      },
+      { name: "A Chacun son minimum Vital", link: RoutePaths.MINIMUM_VITAL },
+      {
+        name: "Sensibilisation, Assistance et Conseil aux personnes âgées",
+        link: RoutePaths.SENSIBILISATION_ASSISTANCE_PERSONNES_AGEES,
+      },
+    ],
   },
   {
-    name: "Causes",
-    link: "/nos-causes",
+    name: "Nos Programmes",
+    items: [
+      { name: "Appui aux Plus Pauvres", link: RoutePaths.APPUI_PLUS_PAUVRES },
+      {
+        name: "Appui aux Orphelins Handicap",
+        link: RoutePaths.APPUI_ORPHELINS_HANDICAP,
+      },
+      {
+        name: "Service d'Aide et d'accompagnement à Domicile des personnes âgées",
+        link: RoutePaths.AIDE_ACCOMPAGNEMENT_DOMICILE,
+      },
+    ],
   },
   {
-    name: "Evenements",
-    link: "/evenement",
-  },
-  {
-    name: "Contact",
-    link: "/contact",
+    name: "Contactez-nous",
+    link: RoutePaths.CONTACT,
   },
 ];
 
@@ -50,18 +95,32 @@ const Header = (props) => {
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-      <Typography variant="h6" sx={{ my: 2, textTransform: "uppercase" }}>
-        dnk
-      </Typography>
+      <Box
+        component="img"
+        src={logo}
+        alt="logo"
+        sx={{
+          height: "90px",
+        }}
+      />
       <Divider />
       <List>
-        {navItems.map((item, index) => (
-          <ListItem key={index} disablePadding>
-            <ListItemButton sx={{ textAlign: "center" }}>
-              <ListItemText primary={item.name} />
-            </ListItemButton>
-          </ListItem>
-        ))}
+        {navItems.map((item, index) =>
+          item.items ? (
+            <DropdownMenu
+              key={index}
+              title={item.name}
+              items={item.items}
+              to={item.items}
+            />
+          ) : (
+            <ListItem key={index} disablePadding>
+              <ListItemButton sx={{ textAlign: "center" }}>
+                <ListItemText primary={item.name} />
+              </ListItemButton>
+            </ListItem>
+          )
+        )}
       </List>
     </Box>
   );
@@ -117,28 +176,41 @@ const Header = (props) => {
             >
               <Menu sx={{ color: "#116D6E" }} />
             </IconButton>
-            <Typography
-              variant="h6"
-              component="div"
+            <Box
+              component="img"
+              src={logo}
+              alt="logo"
               sx={{
-                textTransform: "uppercase",
                 display: { xs: "none", sm: "block" },
+                height: "70px", // Hide on xs, show on sm and larger
               }}
-            >
-              dnk
-            </Typography>
+            />
+
             <Box sx={{ display: { xs: "none", sm: "block" } }}>
-              {navItems.map((item, index) => (
-                <Button
-                  component={Link}
-                  to={item.link}
-                  key={index}
-                  sx={{ color: "#000" }}
-                >
-                  {item.name}
-                </Button>
-              ))}
-              <StyledButton ml="3em !important" bgc="#2E8A99 !important">
+              {navItems.map((item, index) =>
+                item.items ? (
+                  <DropdownMenu
+                    key={index}
+                    title={item.name}
+                    items={item.items}
+                    to={item.items}
+                  />
+                ) : (
+                  <Button
+                    component={Link}
+                    to={item.link}
+                    key={index}
+                    sx={{
+                      color: "#000",
+                      fontSize: "12px",
+                      fontFamily: "Baskervville SC, serif",
+                    }}
+                  >
+                    {item.name}
+                  </Button>
+                )
+              )}
+              <StyledButton ml="3em !important" bgc="#4ACA4D !important">
                 Faire un Don
               </StyledButton>
             </Box>
@@ -159,8 +231,9 @@ const Header = (props) => {
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
               width: drawerWidth,
-              backgroundColor: "#116D6E",
-              color: "#fff",
+              backgroundColor: "#F5F5F5",
+              color: "#000",
+              textTransform: "uppercase",
             },
           }}
         >
