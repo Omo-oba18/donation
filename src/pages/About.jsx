@@ -5,7 +5,6 @@ import bannerImg from "../assets/images/Hunger-1-530x354.jpg";
 import about1 from "../assets/images/about-img-1.jpg";
 import Aos from "aos";
 
-
 const About = () => {
   useEffect(() => {
     Aos.init({
@@ -124,7 +123,8 @@ const About = () => {
       </Stack>
       <Box
         sx={{
-          width: "60%",
+          width: { xs: "100%", sm: "60%" },
+          padding: { xs: "2em" },
           margin: "0 auto",
         }}
         data-aos="fade-up"
@@ -146,10 +146,13 @@ const About = () => {
           en accompagnant les enfants démunis, orphelins, les jeunes
           déscolarisés et les femmes en difficulté de la rue du monde dans leur
           quotidien, en permettant des moments d’échanges, de joie, d’expression
-          et d’enseignements mutuels.
+          et d’enseignements mutuels. <br />
+          <br />
+          Chaque action entreprise dans la communauté est fondée sur les besoins
+          prioritaires exprimés dans le respect des droits humains et dans la
+          diversité.
         </Typography>
       </Box>
-
     </>
   );
 };

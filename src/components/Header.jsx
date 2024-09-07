@@ -27,7 +27,7 @@ const drawerWidth = 240; //width of the drawer on small screen size
 
 const navItems = [
   { name: "Accueil", link: RoutePaths.HOME },
-  { name: "Présentation", link: RoutePaths.PRESENTATION },
+  // { name: "Présentation", link: RoutePaths.PRESENTATION },
   { name: "A Propos", link: RoutePaths.ABOUT },
   { name: "Galerie", link: RoutePaths.GALERIE },
   {
@@ -94,7 +94,14 @@ const Header = (props) => {
   };
 
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
+    <Box
+      sx={{
+        textAlign: "center",
+        fontSize: "12px",
+        fontFamily: "Baskervville SC, serif",
+        fontWeight: "700",
+      }}
+    >
       <Box
         component="img"
         src={logo}
@@ -104,7 +111,13 @@ const Header = (props) => {
         }}
       />
       <Divider />
-      <List>
+      <List
+        sx={{
+          fontSize: "12px",
+          fontFamily: "Baskervville SC, serif",
+          fontWeight: "700",
+        }}
+      >
         {navItems.map((item, index) =>
           item.items ? (
             <DropdownMenu
@@ -114,8 +127,26 @@ const Header = (props) => {
               to={item.items}
             />
           ) : (
-            <ListItem key={index} disablePadding>
-              <ListItemButton sx={{ textAlign: "center" }}>
+            <ListItem
+              key={index}
+              disablePadding
+              sx={{
+                fontSize: "12px",
+                fontFamily: "Baskervville SC, serif",
+                fontWeight: "700",
+              }}
+            >
+              <ListItemButton
+                component={Link}
+                to={item.link} // Add this line to enable routing
+                sx={{
+                  textAlign: "center",
+                  fontSize: "12px",
+                  fontFamily: "Baskervville SC, serif",
+                  fontWeight: "700",
+                }}
+                onClick={handleDrawerToggle} // Close drawer when navigating
+              >
                 <ListItemText primary={item.name} />
               </ListItemButton>
             </ListItem>
@@ -174,7 +205,7 @@ const Header = (props) => {
               onClick={handleDrawerToggle}
               sx={{ mr: 2, display: { sm: "none" } }}
             >
-              <Menu sx={{ color: "#116D6E" }} />
+              <Menu sx={{ color: "#0001FC" }} />
             </IconButton>
             <Box
               component="img"
@@ -240,6 +271,9 @@ const Header = (props) => {
               backgroundColor: "#F5F5F5",
               color: "#000",
               textTransform: "uppercase",
+              fontSize: "12px",
+              fontFamily: "Baskervville SC, serif",
+              fontWeight: "700",
             },
           }}
         >

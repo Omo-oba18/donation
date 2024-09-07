@@ -1,7 +1,7 @@
 // routes/RoutePaths.js
 export const RoutePaths = {
     HOME: "/",
-    PRESENTATION: "/présentation",
+    // PRESENTATION: "/présentation",
     ABOUT: "/a-propos",
     GALERIE: "/galerie",
   

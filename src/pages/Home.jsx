@@ -1,4 +1,7 @@
 import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
   Box,
   Button,
   Grid,
@@ -9,11 +12,11 @@ import {
 import React, { useEffect } from "react";
 import Banner from "../components/Banner";
 import { StyledButton } from "../misc/component";
-
+import { ExpandMoreOutlined } from "@mui/icons-material";
 import { Helmet } from "react-helmet-async";
 import Aos from "aos";
 import bannerImg from "../assets/images/banner-1.jpg";
-import { fundraiser, gridItem } from "../api/service";
+import { fundraiser, objectives } from "../api/service";
 import { Link } from "react-router-dom";
 
 const Home = () => {
@@ -93,7 +96,7 @@ const Home = () => {
           </Stack>
         </Stack>
       </Banner>
-      <Box sx={{ flexGrow: 1 }} data-aos="fade-up">
+      {/* <Box sx={{ flexGrow: 1 }} data-aos="fade-up">
         <Grid
           container
           spacing={{ xs: 2, md: 3 }}
@@ -131,8 +134,12 @@ const Home = () => {
             </Grid>
           ))}
         </Grid>
-      </Box>
-      <Stack sx={{ background: "#fff", padding: "3em" }}>
+      </Box> */}
+
+      <Stack
+        data-aos="zoom-in-down"
+        sx={{ background: "#fff", padding: "3em" }}
+      >
         <Typography
           fontSize={{ xs: "32px", md: "54px" }}
           fontFamily="Josefin Sans, sans-serif"
@@ -169,6 +176,7 @@ const Home = () => {
                     width: "100%",
                     boxShadow: "rgb(221, 221, 221) 0px 7px 31px 0px",
                   }}
+                  data-aos="flip-left"
                 >
                   <Stack
                     direction="row"
@@ -194,6 +202,25 @@ const Home = () => {
           </Grid>
         </Box>
       </Stack>
+      <Box sx={{ padding: "2rem", backgroundColor: "#F4F4F4" }}>
+        <Typography variant="h4" align="center" gutterBottom>
+          Nos Buts et Objectifs
+        </Typography>
+        {objectives.map((obj, index) => (
+          <Accordion key={index}>
+            <AccordionSummary
+              expandIcon={<ExpandMoreOutlined />}
+              aria-controls={`panel${index}-content`}
+              id={`panel${index}-header`}
+            >
+              <Typography>{obj.title}</Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <Typography>{obj.description}</Typography>
+            </AccordionDetails>
+          </Accordion>
+        ))}
+      </Box>
       <Box
         sx={{
           padding: "2em",
@@ -220,7 +247,7 @@ const Home = () => {
             Découvrez comment votre don peut atteindre
           </Typography>
           <Typography textAlign="center">
-            a Révolution française a constitué pour la conscience des dominants
+            la Révolution française a constitué pour la conscience des dominants
             classe aristocratique une chute de l'innocence et un renversement de
             la nature chaîne d'événements qui a retenti.
           </Typography>
