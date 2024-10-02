@@ -14,10 +14,28 @@ const ReusableGrid = ({
   txtColor = "#fff",
   isRounded = true,
 }) => {
+  const itemCount = items.length;
+
   return (
-    <Grid container spacing={spacing}>
+    <Grid
+      container
+      spacing={spacing}
+      justifyContent={itemCount > 0 ? "center" : "flex-start"} // Center items
+      style={{
+        minHeight: minHeight, // Ensure there's a minimum height for the grid
+        display: "flex",
+        flexDirection: "row",
+        alignItems: "center", // Center items vertically
+      }}
+    >
       {items.map((item, index) => (
-        <Grid item xs={12} sm={6} md={3} key={index}>
+        <Grid
+          item
+          xs={12}
+          sm={itemCount === 2 ? 6 : 3} // Adjust column size based on the item count
+          md={itemCount === 2 ? 6 : 3}
+          key={index}
+        >
           <Paper
             data-aos="zoom-in" // Change to desired animation
             data-aos-delay={`${index * 100}`} // Staggered effect
