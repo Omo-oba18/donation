@@ -4,6 +4,8 @@ import { Box, Stack, Typography } from "@mui/material";
 import bannerImg from "../assets/images/Hunger-1-530x354.jpg";
 import about1 from "../assets/images/about-img-1.jpg";
 import Aos from "aos";
+import { objectives } from "../api/service";
+import ReusableGrid from "../components/ReusableGrid";
 
 const About = () => {
   useEffect(() => {
@@ -152,6 +154,21 @@ const About = () => {
           prioritaires exprimés dans le respect des droits humains et dans la
           diversité.
         </Typography>
+      </Box>
+      <Box
+        sx={{ padding: "2rem", backgroundColor: "#F4F4F4", margin: "2em 0" }}
+        data-aos="zoom-in"
+      >
+        <Typography variant="h4" align="center" gutterBottom>
+          Nos Buts et Objectifs
+        </Typography>
+        <ReusableGrid
+          items={objectives}
+          spacing={2}
+          backgroundColor="#f5f5f5"
+          minHeight="350px"
+          btnText="Voir plus"
+        />
       </Box>
     </>
   );

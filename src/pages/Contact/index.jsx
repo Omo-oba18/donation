@@ -1,6 +1,5 @@
 import { Stack, Typography } from "@mui/material";
 import React, { useEffect } from "react";
-import FaireDon from "./FaireDon";
 import ParrainerEnfant from "./ParrainerEnfant";
 import Banner from "../../components/Banner";
 import Aos from "aos";
@@ -43,8 +42,7 @@ const Contact = () => {
         </Stack>
       </Banner>
       <div style={{margin:"2em 0"}}></div>
-      <Title titleColor="#0001FA" text="Contactez-nous" size="20px" />
-      <FaireDon />
+      <Title titleColor="#0001FA" text="Contactez-nous" size="20px" data-aos="zoom-in"/>
       <ParrainerEnfant />
     </Stack>
   );

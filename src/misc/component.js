@@ -8,7 +8,7 @@ export const StyledButton = styled(Button)`
   text-transform: capitalize;
   text-align: center;
   cursor: pointer;
-  color: #fff !important;
+  color: ${(props) => props.textColor || "#fff"} !important; 
   outline: none;
   transition: all 400ms linear 0s;
   border: none;

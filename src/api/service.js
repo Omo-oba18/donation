@@ -3,7 +3,12 @@ import {
   Construction,
   LightMode,
   Storage,
+  LocalDining,
+  School,
+  HealthAndSafety,
+  GroupWork,
 } from "@mui/icons-material";
+
 import campagne_1 from "../assets/images/campagne-1.jpg";
 import campagne_2 from "../assets/images/campagne-3.jpg";
 import campagne_3 from "../assets/images/campagne-4.jpg";
@@ -23,6 +28,11 @@ import galery_12 from "../assets/images/galeries/galery-12.jpg";
 import galery_13 from "../assets/images/galeries/galery-13.jpg";
 import galery_14 from "../assets/images/galeries/galery-14.jpg";
 import galery_15 from "../assets/images/galeries/galery-15.jpg";
+import volunteerIcon from "../assets/icons/peace_cooperate_together_teamwork_collaborate_icon.svg";
+import orphanIcon from "../assets/icons/calendar_care_donation_heart_icon.png";
+import carePregnantIcon from "../assets/icons/baby_care_kid_stroller_icon.svg";
+import healthIcon from "../assets/icons/healthcare_debate_icon.svg";
+import IconWrapper from "../components/IconWrapper";
 
 export const gridItem = [
   {
@@ -97,20 +107,139 @@ export const objectives = [
     title: "Assurer la couverture des besoins essentiels",
     description:
       "Assurer la couverture des besoins essentiels pour le suivi, principalement la sécurité alimentaire avec une implication effective des partenaires financiers.",
+    icon: <LocalDining color="primary" fontSize="large" />,
   },
   {
     title: "Favoriser la mise sur pied de stages",
     description:
       "Favoriser la mise sur pied de stages de sensibilisation et de coopération, au Bénin, en Afrique, auprès des enfants de la rue vivant dans un contexte de grande pauvreté.",
+    icon: <School color="primary" fontSize="large" />,
   },
   {
     title: "Soulager la réinsertion sociale",
     description:
       "Soulager la réinsertion sociale, contribuer à l’avancement de l’éducation, à la promotion de la santé et autres besoins essentiels par l'envoi de matériels scolaires, ludiques, éducatifs, sportifs ou de premiers soins aux enfants et jeunes vivant dans des conditions de vie difficiles.",
+    icon: <HealthAndSafety color="primary" fontSize="large" />,
   },
   {
     title: "Travailler en collaboration avec les ONG",
     description:
       "Travailler en étroite collaboration avec les organisations non gouvernementales (ONG) du Bénin et d'autres régions du monde dans une perspective de développement durable et de transformation sociale.",
+    icon: <GroupWork color="primary" fontSize="large" />,
+  },
+];
+
+export const donates = [
+  {
+    title: "Devenir un volontaire",
+    description:
+      "Rejoignez-nous pour apporter votre soutien aux orphelins et aux communautés défavorisées.",
+    icon: (
+      <IconWrapper>
+        <img src={volunteerIcon} alt="volunteer icon" width="50" height="50" />
+      </IconWrapper>
+    ),
+    titleAlign: "center",
+    descriptionAlign: "center",
+  },
+  {
+    title: "Scholariser un orphelin",
+    description:
+      "Aidez un enfant à accéder à l’éducation en finançant sa scolarité. Offrez un avenir meilleur aujourd'hui.",
+    icon: (
+      <IconWrapper>
+        <img src={orphanIcon} alt="orphan icon" width="50" height="50" />
+      </IconWrapper>
+    ),
+    titleAlign: "center",
+    descriptionAlign: "center",
+  },
+  {
+    title: "Assister une femme enceinte",
+    description:
+      "Soutenez une femme enceinte en difficulté en contribuant à ses besoins médicaux et matériels essentiels.",
+    icon: (
+      <IconWrapper>
+        <img
+          src={carePregnantIcon}
+          alt="pregnant woman icon"
+          width="50"
+          height="50"
+        />
+      </IconWrapper>
+    ),
+    titleAlign: "center",
+    descriptionAlign: "center",
+  },
+  {
+    title: "Cas d'urgence",
+    description:
+      "Faites un don pour soutenir les urgences médicales et les situations critiques. Chaque seconde compte.",
+    icon: (
+      <IconWrapper>
+        <img
+          src={healthIcon}
+          alt="emergency case icon"
+          width="50"
+          height="50"
+        />
+      </IconWrapper>
+    ),
+    titleAlign: "center",
+    descriptionAlign: "center",
+  },
+];
+
+export const eventCarousel = [
+  {
+    imageUrl: galery_3,
+    title: "Photo de Famile",
+  },
+  {
+    imageUrl: galery_4,
+    title: "Remise des dons de kits scolaires aux Enfants",
+  },
+  {
+    imageUrl: galery_5,
+    title: "Photo des Membres du Conseil d'administration",
+  },
+];
+
+export const events = [
+  {
+    date: "24",
+    month: "Nov",
+    title: "Sensibilisation conte le VIH/SIDA",
+    location: "Azalai Hotel, Cadjehoun, Cotonou",
+    time: "12 AM",
+  },
+  {
+    date: "15",
+    month: "Dec",
+    title: "Concert de charité",
+    location: "Stade de l'Amitié, Cotonou",
+    time: "6 PM",
+  },
+  // Add more events as needed
+];
+
+export const reports = [
+  {
+    id: 1,
+    title: "Rapport d'Activité 2021",
+    description: "Un aperçu des activités de l'année 2021.",
+    url: "../assets/docs/rapport-activite-2021.pdf",
+  },
+  {
+    id: 2,
+    title: "Rapport Trimestriel 2022",
+    description: "Analyse des performances du premier trimestre 2022.",
+    url: "../assets/docs/rapport-activite-2022.pdf",
+  },
+  {
+    id: 4,
+    title: "Rapport Annuel 2020",
+    description: "Bilan des activités de l'année 2020.",
+    url: "../assets/docs/rapport-activite-2020.pdf",
   },
 ];

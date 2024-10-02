@@ -16,7 +16,7 @@ import {
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import { StyledButton } from "../misc/component";
+// import { StyledButton } from "../misc/component";
 import logo from "../assets/images/logo-nobg.png";
 import DropdownMenu from "./Dropdown";
 import { RoutePaths } from "../routes/routePaths";
@@ -110,6 +110,7 @@ const Header = (props) => {
           height: "90px",
         }}
       />
+
       <Divider />
       <List
         sx={{
@@ -207,15 +208,17 @@ const Header = (props) => {
             >
               <Menu sx={{ color: "#0001FC" }} />
             </IconButton>
-            <Box
-              component="img"
-              src={logo}
-              alt="logo"
-              sx={{
-                display: { xs: "none", sm: "block" },
-                height: "70px", // Hide on xs, show on sm and larger
-              }}
-            />
+            <Link to="/" sx={{ cursor: "pointer" }}>
+              <Box
+                component="img"
+                src={logo}
+                alt="logo"
+                sx={{
+                  display: { xs: "none", sm: "block" },
+                  height: "70px", // Hide on xs, show on sm and larger
+                }}
+              />
+            </Link>
 
             <Box sx={{ display: { xs: "none", sm: "block" } }}>
               {navItems.map((item, index) =>
@@ -242,14 +245,14 @@ const Header = (props) => {
                   </Button>
                 )
               )}
-              <StyledButton
+              {/* <StyledButton
                 component={Link}
                 to="/contactez-nous"
                 ml="3em !important"
                 bgc="#4ACA4D !important"
               >
                 Faire un Don
-              </StyledButton>
+              </StyledButton> */}
             </Box>
           </Toolbar>
         </AppBar>
