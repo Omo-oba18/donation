@@ -16,10 +16,12 @@ import {
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-// import { StyledButton } from "../misc/component";
 import logo from "../assets/images/logo-nobg.png";
 import DropdownMenu from "./Dropdown";
 import { RoutePaths } from "../routes/routePaths";
+import { StyledButton } from "../misc/component";
+import DonationModalContent from "./DonationModal";
+import { useModal } from "../provider/ModalProvider";
 
 const drawerWidth = 240; //width of the drawer on small screen size
 // variable used for the menu items
@@ -38,29 +40,23 @@ const navItems = [
         link: RoutePaths.AUTONOMISATION_FILLE,
       },
       {
-        name: "Lutte contre la grossesse et le VIH/ IST en milieu scolaire",
+        name: "Lutte contre la grossesse précoce en milieu scolaire",
         link: RoutePaths.LUTTE_GROSSESSE_VIH_IST,
       },
       {
-        name: "Remise des kits scolaires aux Orphelins Enfants Vulnérables",
+        name: "Remise de Don de kits scolaires",
         link: RoutePaths.REMISE_KITS_SCOLAIRES,
-      },
-      {
-        name: "Octroi de la bourse d'études aux Enfants Vulnérables",
-        link: RoutePaths.BOURSE_ETUDES_ENFANTS,
       },
       {
         name: "Accès à l'éducation pour tous",
         link: RoutePaths.ACCES_EDUCATION,
       },
-      { name: "Causerie -Débat", link: RoutePaths.CAUSERIE_DEBAT },
       {
         name: "Accès à l'eau et assainissement",
         link: RoutePaths.ACCES_EAU_ASSAINISSEMENT,
       },
-      { name: "A Chacun son minimum Vital", link: RoutePaths.MINIMUM_VITAL },
       {
-        name: "Sensibilisation, Assistance et Conseil aux personnes âgées",
+        name: "Assistance aux personnes âgées",
         link: RoutePaths.SENSIBILISATION_ASSISTANCE_PERSONNES_AGEES,
       },
     ],
@@ -69,6 +65,10 @@ const navItems = [
     name: "Nos Programmes",
     items: [
       { name: "Appui aux Plus Pauvres", link: RoutePaths.APPUI_PLUS_PAUVRES },
+      {
+        name: "Appui aux Élèves, et à la formation l'entrepreneuriat",
+        link: RoutePaths.APPUI_AUX_ELEVEZ_ENTREPENUERIAT,
+      },
       {
         name: "Appui aux Orphelins Handicap",
         link: RoutePaths.APPUI_ORPHELINS_HANDICAP,
@@ -88,6 +88,11 @@ const navItems = [
 const Header = (props) => {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const { openModal } = useModal();
+
+  const handleDonateClick = () => {
+    openModal(<DonationModalContent />); // Pass the content of the modal
+  };
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
@@ -245,14 +250,13 @@ const Header = (props) => {
                   </Button>
                 )
               )}
-              {/* <StyledButton
-                component={Link}
-                to="/contactez-nous"
+              <StyledButton
+                onClick={handleDonateClick}
                 ml="3em !important"
                 bgc="#4ACA4D !important"
               >
                 Faire un Don
-              </StyledButton> */}
+              </StyledButton>
             </Box>
           </Toolbar>
         </AppBar>

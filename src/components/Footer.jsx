@@ -1,7 +1,6 @@
 import {
   ArrowRight,
   Facebook,
-  Favorite,
   Instagram,
   LinkedIn,
   Twitter,
@@ -20,7 +19,6 @@ import emailIcon from "../assets/icons/email.svg";
 import phoneIcon from "../assets/icons/phone.svg";
 import locationIcon from "../assets/icons/location.svg";
 import infoIcon from "../assets/icons/info.svg";
-import { fontSize } from "@mui/system";
 
 const Footer = () => {
   return (

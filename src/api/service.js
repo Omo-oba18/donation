@@ -85,21 +85,84 @@ export const fundraiser = [
 ];
 
 export const galeries = [
-  { img: galery_1, title: "Bed", author: "swabdesign" },
-  { img: galery_2, title: "Living Room", author: "homedesign" },
-  { img: galery_3, title: "Kitchen", author: "interiordeco" },
-  { img: galery_4, title: "Garden", author: "greenthumb" },
-  { img: galery_5, title: "Office", author: "workspace" },
-  { img: galery_6, title: "Bathroom", author: "aqualux" },
-  { img: galery_7, title: "Balcony", author: "openair" },
-  { img: galery_8, title: "Dining Room", author: "dinetable" },
-  { img: galery_9, title: "Bedroom", author: "dreamland" },
-  { img: galery_10, title: "Hallway", author: "pathway" },
-  { img: galery_11, title: "Library", author: "bookworm" },
-  { img: galery_12, title: "Terrace", author: "sunnyspot" },
-  { img: galery_13, title: "Kids Room", author: "playhouse" },
-  { img: galery_14, title: "Garage", author: "carplace" },
-  { img: galery_15, title: "Patio", author: "outdoor" },
+  {
+    img: galery_1,
+    title: "Bed",
+    author: "causerie débat sur le choc de vieillissement",
+  },
+  {
+    img: galery_2,
+    title: "Living Room",
+    author: "Remise des dons de kits scolaires",
+  },
+  {
+    img: galery_3,
+    title: "Kitchen",
+    author: "Remise des dons de kits scolaires",
+  },
+  {
+    img: galery_4,
+    title: "Garden",
+    author: "Remise des dons de kits scolaires",
+  },
+  {
+    img: galery_5,
+    title: "Office",
+    author: "les parents des enfants Orphelins démunis",
+  },
+  {
+    img: galery_6,
+    title: "Bathroom",
+    author:
+      "Mot de remerciement et de la bienvenue par le Directeur Exécutif de l'ONG SAVE VIGNON",
+  },
+  {
+    img: galery_7,
+    title: "Balcony",
+    author:
+      "Séance de travail avec l'orphelinat la Bergerie de Dieu sise à Calavi",
+  },
+  {
+    img: galery_8,
+    title: "Dining Room",
+    author: "Remise des dons de kits scolaires",
+  },
+  {
+    img: galery_9,
+    title: "Bedroom",
+    author: "Remise des dons de kits scolaires",
+  },
+  {
+    img: galery_10,
+    title: "Hallway",
+    author: "Remise des dons de kits scolaires",
+  },
+  {
+    img: galery_11,
+    title: "Library",
+    author: "les parents des enfants Orphelins démunis",
+  },
+  {
+    img: galery_12,
+    title: "Terrace",
+    author:
+      "Mot de remerciement et de la bienvenue par le Directeur Exécutif de l'ONG SAVE VIGNON",
+  },
+  {
+    img: galery_13,
+    title: "Kids Room",
+    author: "Les membres du conseil d'administration de l'ONG SAVE VIGNON",
+  },
+  {
+    img: galery_14,
+    title: "Garage",
+    author: "causerie débat sur le choc de vieillissement",
+  },
+  {
+    img: galery_15,
+    title: "Patio",
+    author: "causerie débat sur le choc de vieillissement",
+  },
 ];
 
 export const objectives = [
@@ -116,9 +179,9 @@ export const objectives = [
     icon: <School color="primary" fontSize="large" />,
   },
   {
-    title: "Soulager la réinsertion sociale",
+    title: "Soutenir la réinsertion sociale",
     description:
-      "Soulager la réinsertion sociale, contribuer à l’avancement de l’éducation, à la promotion de la santé et autres besoins essentiels par l'envoi de matériels scolaires, ludiques, éducatifs, sportifs ou de premiers soins aux enfants et jeunes vivant dans des conditions de vie difficiles.",
+      "Soutenir la réinsertion sociale, contribuer à l’avancement de l’éducation, à la promotion de la santé et autres besoins essentiels par l'envoi de matériels scolaires, ludiques, éducatifs, sportifs ou de premiers soins aux enfants et jeunes vivant dans des conditions de vie difficiles.",
     icon: <HealthAndSafety color="primary" fontSize="large" />,
   },
   {
@@ -241,5 +304,26 @@ export const reports = [
     title: "Rapport Annuel 2020",
     description: "Bilan des activités de l'année 2020.",
     url: "../assets/docs/rapport-activite-2020.pdf",
+  },
+];
+
+export const appuiPauvre = [
+  {
+    title: "Distribution de Kits Alimentaires",
+    description:
+      "Nous mettons en place des distributions régulières de kits alimentaires pour aider les familles à couvrir leurs besoins nutritionnels de base.",
+    icon: <LocalDining />,
+  },
+  {
+    title: "Aide Médicale",
+    description:
+      "Nous offrons des consultations médicales gratuites et des médicaments aux personnes vulnérables grâce à des partenariats avec des structures de santé locales.",
+    icon: <HealthAndSafety />,
+  },
+  {
+    title: "Programmes de Microfinance",
+    description:
+      "Nous facilitons l'accès à de petites sommes d'argent pour permettre aux bénéficiaires de lancer des micro-entreprises et d'améliorer leurs revenus.",
+    icon: <HealthAndSafety />,
   },
 ];

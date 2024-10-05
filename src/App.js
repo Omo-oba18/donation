@@ -13,6 +13,8 @@ import Header from "./components/Header";
 import { KeyboardArrowUp } from "@mui/icons-material";
 import AppRoutes from "./routes/AppRoutes";
 import "aos/dist/aos.css";
+import { ModalProvider } from "./provider/ModalProvider";
+import GlobalModal from "./components/GlobalModal";
 // to go back to up i have implemented the folloing function
 function ScrollTop(props) {
   const { children, window } = props;
@@ -53,18 +55,21 @@ ScrollTop.propTypes = {
 };
 function App(props) {
   return (
-    <BrowserRouter>
-      <CssBaseline />
-      <Header />
-      <Toolbar id="back-to-top-anchor" />
-      <AppRoutes />
-      <Footer />
-      <ScrollTop {...props}>
-        <Fab size="small" aria-label="scroll back to top">
-          <KeyboardArrowUp />
-        </Fab>
-      </ScrollTop>
-    </BrowserRouter>
+    <ModalProvider>
+      <BrowserRouter>
+        <CssBaseline />
+        <Header />
+        <Toolbar id="back-to-top-anchor" />
+        <AppRoutes />
+        <Footer />
+        <ScrollTop {...props}>
+          <Fab size="small" aria-label="scroll back to top">
+            <KeyboardArrowUp />
+          </Fab>
+        </ScrollTop>
+        <GlobalModal />
+      </BrowserRouter>
+    </ModalProvider>
   );
 }
 

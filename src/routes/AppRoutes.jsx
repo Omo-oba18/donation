@@ -19,22 +19,20 @@ const LutteGrossesseVihIst = lazy(() =>
 const RemiseKitsScolaires = lazy(() =>
   import("../pages/NosActivites/RemiseKitsScolaires")
 );
-const BourseEtudesEnfants = lazy(() =>
-  import("../pages/NosActivites/BourseEtudesEnfants")
-);
 const AccesEducation = lazy(() =>
   import("../pages/NosActivites/AccesEducation")
 );
-const CauserieDebat = lazy(() => import("../pages/NosActivites/CauserieDebat"));
 const AccesEauAssainissement = lazy(() =>
   import("../pages/NosActivites/AccesEauAssainissement")
 );
-const MinimumVital = lazy(() => import("../pages/NosActivites/MinimumVital"));
 const SensibilisationAssistancePersonnesAgees = lazy(() =>
   import("../pages/NosActivites/SensibilisationAssistancePersonnesAgees")
 );
 const AppuiPlusPauvres = lazy(() =>
   import("../pages/NosProgrammes/AppuiPlusPauvres")
+);
+const AppuiEleveEntrepeneuriat = lazy(() =>
+  import("../pages/NosProgrammes/AppuiEleveEntrepeneuriat")
 );
 const AppuiOrphelinsHandicap = lazy(() =>
   import("../pages/NosProgrammes/AppuiOrphelinsHandicap")
@@ -66,17 +64,11 @@ const AppRoutes = () => (
         path={RoutePaths.REMISE_KITS_SCOLAIRES}
         element={<RemiseKitsScolaires />}
       />
-      <Route
-        path={RoutePaths.BOURSE_ETUDES_ENFANTS}
-        element={<BourseEtudesEnfants />}
-      />
       <Route path={RoutePaths.ACCES_EDUCATION} element={<AccesEducation />} />
-      <Route path={RoutePaths.CAUSERIE_DEBAT} element={<CauserieDebat />} />
       <Route
         path={RoutePaths.ACCES_EAU_ASSAINISSEMENT}
         element={<AccesEauAssainissement />}
       />
-      <Route path={RoutePaths.MINIMUM_VITAL} element={<MinimumVital />} />
       <Route
         path={RoutePaths.SENSIBILISATION_ASSISTANCE_PERSONNES_AGEES}
         element={<SensibilisationAssistancePersonnesAgees />}
@@ -86,6 +78,10 @@ const AppRoutes = () => (
       <Route
         path={RoutePaths.APPUI_PLUS_PAUVRES}
         element={<AppuiPlusPauvres />}
+      />
+      <Route
+        path={RoutePaths.APPUI_AUX_ELEVEZ_ENTREPENUERIAT}
+        element={<AppuiEleveEntrepeneuriat />}
       />
       <Route
         path={RoutePaths.APPUI_ORPHELINS_HANDICAP}

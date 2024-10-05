@@ -19,6 +19,7 @@ export const RoutePaths = {
   
     // Nos Programmes
     APPUI_PLUS_PAUVRES: "/nos-programmes/appui-plus-pauvres",
+    APPUI_AUX_ELEVEZ_ENTREPENUERIAT: "/nos-programmes/appui-eleve-entrepeneuriat",
     APPUI_ORPHELINS_HANDICAP: "/nos-programmes/appui-orphelins-handicap",
     AIDE_ACCOMPAGNEMENT_DOMICILE: "/nos-programmes/aide-accompagnement-domicile",
   
