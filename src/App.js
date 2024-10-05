@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { BrowserRouter } from "react-router-dom";
 import Footer from "./components/Footer";
 import {
@@ -15,9 +16,11 @@ import AppRoutes from "./routes/AppRoutes";
 import "aos/dist/aos.css";
 import { ModalProvider } from "./provider/ModalProvider";
 import GlobalModal from "./components/GlobalModal";
-// to go back to up i have implemented the folloing function
+import Loading from "./components/Loading";
+
 function ScrollTop(props) {
   const { children, window } = props;
+
   const trigger = useScrollTrigger({
     target: window ? window() : undefined,
     disableHysteresis: true,
@@ -53,7 +56,24 @@ ScrollTop.propTypes = {
   children: PropTypes.element.isRequired,
   window: PropTypes.func,
 };
+
 function App(props) {
+  const [isLoading, setIsLoading] = useState(true); // Track loading state
+
+  useEffect(() => {
+    // Simulate a delay or track resource loading.
+    // You can use promises here to track when all resources are done loading.
+    const timer = setTimeout(() => {
+      setIsLoading(false); // When everything is loaded, set loading to false
+    }, 5000); // Adjust delay for actual loading time
+
+    return () => clearTimeout(timer); // Clean up timer on unmount
+  }, []);
+
+  if (isLoading) {
+    return <Loading />;
+  }
+
   return (
     <ModalProvider>
       <BrowserRouter>

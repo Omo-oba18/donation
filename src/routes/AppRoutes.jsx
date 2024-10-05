@@ -6,7 +6,6 @@ import { RoutePaths } from "./routePaths";
 
 // Lazy load components
 const Home = lazy(() => import("../pages/Home"));
-// const Presentation = lazy(() => import("../pages/Presentation"));
 const About = lazy(() => import("../pages/About"));
 const Galerie = lazy(() => import("../pages/Galerie"));
 
@@ -47,11 +46,8 @@ const AppRoutes = () => (
   <Suspense fallback={<Loading />}>
     <Routes>
       <Route exact path={RoutePaths.HOME} element={<Home />} />
-      {/* <Route path={RoutePaths.PRESENTATION} element={<Presentation />} /> */}
       <Route path={RoutePaths.ABOUT} element={<About />} />
       <Route path={RoutePaths.GALERIE} element={<Galerie />} />
-
-      {/* Nos Activités */}
       <Route
         path={RoutePaths.AUTONOMISATION_FILLE}
         element={<AutonomisationFille />}
@@ -73,8 +69,6 @@ const AppRoutes = () => (
         path={RoutePaths.SENSIBILISATION_ASSISTANCE_PERSONNES_AGEES}
         element={<SensibilisationAssistancePersonnesAgees />}
       />
-
-      {/* Nos Programmes */}
       <Route
         path={RoutePaths.APPUI_PLUS_PAUVRES}
         element={<AppuiPlusPauvres />}
@@ -91,8 +85,6 @@ const AppRoutes = () => (
         path={RoutePaths.AIDE_ACCOMPAGNEMENT_DOMICILE}
         element={<AideAccompagnementDomicile />}
       />
-
-      {/* Contact */}
       <Route path={RoutePaths.CONTACT} element={<Contact />} />
     </Routes>
   </Suspense>
