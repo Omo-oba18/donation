@@ -3,10 +3,9 @@ import React from "react";
 
 const VideoPlayer = ({ src, width, height, title }) => {
   return (
-    <div style={{ display: "flex", justifyContent: "center", padding: "20px" }}>
+    <div className="video-container">
       <iframe
-        width={width}
-        height={height}
+        className="video-iframe"
         src={src}
         title={title}
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

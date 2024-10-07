@@ -41,6 +41,7 @@ const AideAccompagnementDomicile = lazy(() =>
 );
 
 const Contact = lazy(() => import("../pages/Contact"));
+const Faq = lazy(() => import("../pages/Faq"));
 
 const AppRoutes = () => (
   <Suspense fallback={<Loading />}>
@@ -86,6 +87,7 @@ const AppRoutes = () => (
         element={<AideAccompagnementDomicile />}
       />
       <Route path={RoutePaths.CONTACT} element={<Contact />} />
+      <Route path={RoutePaths.FAQ} element={<Faq />} />
     </Routes>
   </Suspense>
 );

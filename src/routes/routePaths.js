@@ -25,5 +25,6 @@ export const RoutePaths = {
   
     // Contact
     CONTACT: "/contactez-nous",
+    FAQ: "/faq",
   };
   

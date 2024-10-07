@@ -1,21 +1,18 @@
-import { Box, Grid, Paper, Stack, Typography } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import React, { useEffect } from "react";
 import Banner from "../components/Banner";
 import { Helmet } from "react-helmet-async";
 import Aos from "aos";
 import bannerImg from "../assets/images/banner-1.jpg";
-import {
-  donates,
-  eventCarousel,
-  events,
-  fundraiser,
-  reports,
-} from "../api/service";
+import { donates, eventCarousel, events, reports } from "../api/service";
 import ReusableGrid from "../components/ReusableGrid";
 import Carousel from "../components/Carousel";
 import Title from "../components/Title";
 import EventCard from "../components/EventCard";
 import VideoPlayer from "../components/VideoPlayer";
+import DonationModalContent from "../components/DonationModal";
+import { useModal } from "../provider/ModalProvider";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   // Define the base title and the new title to append
@@ -27,29 +24,15 @@ const Home = () => {
       duration: 2000, // Animation duration in milliseconds
     });
   }, []);
+  const { openModal } = useModal();
 
-  // const [selectedAmount, setSelectedAmount] = useState("");
-  // const [customAmount, setCustomAmount] = useState("");
-
-  // const handleAmountChange = (event) => {
-  //   setSelectedAmount(event.target.value);
-  //   if (event.target.value !== "custom") {
-  //     setCustomAmount(""); // Clear custom amount when predefined is selected
-  //   }
-  // };
-
-  // const handleCustomAmountChange = (event) => {
-  //   setCustomAmount(event.target.value);
-  //   setSelectedAmount("custom"); // Set the selected to custom when user inputs a value
-  // };
-
-  // const handleDonate = () => {
-  //   const donationAmount =
-  //     selectedAmount === "custom" ? customAmount : selectedAmount;
-  //   console.log(`Donation amount: ${donationAmount}`);
-  //   // Add your donation processing logic here
-  // };
-
+  const handleDonateClick = () => {
+    openModal(<DonationModalContent />); // Pass the content of the modal
+  };
+  const handleOpenPdf = () => {
+    const pdfUrl = "../assets/docs"; // Path to the PDF in the public folder
+    window.open(pdfUrl, "_blank", "noopener,noreferrer");
+  };
   return (
     <Stack>
       <Helmet>
@@ -108,19 +91,15 @@ const Home = () => {
           <Stack
             sx={{ marginTop: "2em" }}
             direction={{ xs: "column", sm: "row" }}
-          >
-            {/* <StyledButton bgc="#4ACA4D !important" mbSmall="2em !important">
-              Faire un don
-            </StyledButton> */}
-            {/* <StyledButton ml="2em !important" mlSmall="0px !important">
-              Voir les activites
-            </StyledButton> */}
-          </Stack>
+          ></Stack>
         </Stack>
       </Banner>
       <Stack
         direction={{ xs: "column", sm: "row" }}
-        sx={{ padding: "0 5em", transform: "translateY(-150px)" }}
+        sx={{
+          padding: { xs: "0 2em", sm: "0 5em" },
+          transform: { sm: "translateY(-150px)" },
+        }}
       >
         <ReusableGrid
           items={donates}
@@ -129,32 +108,38 @@ const Home = () => {
           hideBorder={true}
           btnText="Faire un don"
           btnColor="#fff !important"
-          txtColor="#000"
+          textColor="#000"
           isRounded={false}
+          handleEvent={handleDonateClick}
           minHeight="300px"
         />
       </Stack>
-      <Typography variant="h3" textAlign="center" sx={{ margin: "1em 0" }}>
+      <Typography
+        textAlign="center"
+        sx={{ margin: "1em 0", fontSize: { xs: "28px", sm: "36px" } }}
+      >
         ONG SAVE VIGNON -- Ensemble relevons de grand defi
       </Typography>
       <Stack
         direction={{ xs: "column", sm: "row" }}
-        sx={{ display: "flex", alignItems: "start", justifyContent: "center" }}
+        sx={{
+          display: "flex",
+          alignItems: { xs: "center", sm: "start" },
+          justifyContent: "center",
+        }}
       >
-        <Box>
-          <Title text="Les Ceremonies" size="16px" />
+        <Stack direction="column" sx={{ alignItems: "center" }}>
+          <Title titleColor="#000" text="Les Ceremonies" size="16px" />
           <Carousel items={eventCarousel} maxWidth="400px" />
-        </Box>
+        </Stack>
         <Box sx={{ margin: "0 2em" }}>
           <VideoPlayer
             src="https://www.youtube.com/embed/nC1rHs2gHcA" // Replace with your video URL
-            width="600px"
-            height="400px"
             title="Société : l&#39;Ong Save-Vignon fait don de kits scolaires aux apprenants de Dandji"
           />
         </Box>
-        <Box>
-          <Title text="Les Evenements à venir" size="16px" />
+        <Stack direction="column" sx={{ alignItems: "center" }}>
+          <Title titleColor="#000" text="Les Evenements à venir" size="16px" />
           <Stack direction="column" spacing={2}>
             {events.map((event, index) => (
               <EventCard
@@ -167,189 +152,51 @@ const Home = () => {
               />
             ))}
           </Stack>
-        </Box>
+        </Stack>
       </Stack>
 
-      <Stack
+      <Box
         data-aos="zoom-in-down"
-        sx={{ background: "#fff", padding: "2em 3em" }}
+        sx={{
+          background: "#f0fce9",
+          padding: { xs: "7em 2em", sm: "7em 0" },
+          display: "flex",
+          justifyContent: "center",
+          margin: "1.5em 0",
+        }}
       >
-        <Typography
-          fontSize={{ xs: "32px", md: "54px" }}
-          fontFamily="Josefin Sans, sans-serif"
-          textAlign="center"
-          marginBottom=".6em"
-        >
-          Soutenir une campagne ou une collecte de fonds
-        </Typography>
-        <Typography textAlign="center">
-          Assurer la couverture des besoins essentiels pour la suivi,
-          principalement la sécurité alimentaire avec une implication effective
-          des partenaires financiers
-        </Typography>
-        <Box sx={{ flexGrow: 1, paddingTop: "2em" }}>
-          <Grid
-            container
-            spacing={{ xs: 2, md: 3 }}
-            columns={{ xs: 4, sm: 8, md: 12 }}
+        <Box sx={{ maxWidth: { sm: "60rem" } }}>
+          <Typography
+            fontFamily="Josefin Sans, sans-serif"
+            sx={{
+              lineHeight: "1.2",
+              fontWeight: "600",
+              fontSize: { xs: "22px", md: "34px" },
+              marginBottom: ".5em",
+            }}
           >
-            {fundraiser.map((fund, index) => (
-              <Grid
-                item
-                xs={12}
-                md={6}
-                key={index}
-                sx={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <Paper
-                  sx={{
-                    width: "100%",
-                    boxShadow: "rgb(221, 221, 221) 0px 7px 31px 0px",
-                  }}
-                  data-aos="flip-left"
-                >
-                  <Stack
-                    direction="row"
-                    sx={{
-                      background: "#fff",
-                      height: "100%", // Set height to 100%
-                      width: "100%", // Set width to 100%
-                      padding: "1em",
-                      borderBottom: "2px solid #2E8A99",
-                    }}
-                  >
-                    <img width="130px" height="130px" src={fund.src} alt="" />
-                    <Stack sx={{ marginLeft: "1em" }}>
-                      <Typography fontWeight={600}>{fund.title}</Typography>
-                      <Typography>
-                        {fund.currency} {fund.price}
-                      </Typography>
-                    </Stack>
-                  </Stack>
-                </Paper>
-              </Grid>
-            ))}
-          </Grid>
+            Soutenir une campagne ou <br /> une collecte de fonds
+          </Typography>
+          <Typography sx={{ lineHeight: "1.6" }}>
+            Engagée à apporter un soutien essentiel aux plus vulnérables, notre
+            plateforme œuvre pour l'autonomisation des filles mères, l'accès à
+            une éducation pour tous et la prévention des grossesses précoces en
+            milieu scolaire. Nos programmes visent à améliorer les conditions de
+            vie des plus démunis, à favoriser l'accès à l'eau potable et à
+            offrir un accompagnement à domicile pour les personnes âgées.
+            Ensemble, nous créons un avenir plus juste et solidaire, où chacun a
+            la possibilité de s'épanouir.
+            <Typography sx={{ marginTop: ".6em" }}>
+              Vous avez de{" "}
+              <Link to="/faq" style={{ color: "#000" }}>
+                questions
+              </Link>
+              ? Mieux savoir sur l'
+              <strong>ONG SAVE VIGNON</strong>
+            </Typography>
+          </Typography>
         </Box>
-      </Stack>
-      {/* <Box padding={4}>
-        <Typography variant="h5" align="center" gutterBottom>
-          Notre but aujourd'hui est d'atteindre 10,000$ pour les orphelins de
-          [votre lieu ici]
-        </Typography>
-        <Box
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          marginBottom={4}
-        >
-          <LinearProgress
-            variant="determinate"
-            value={60}
-            style={{ width: "100%", maxWidth: "500px", height: "10px" }}
-          />{" "}
-        </Box>
-
-        <Box display="flex" justifyContent="center" marginBottom={4}>
-          <Grid container spacing={2}>
-            <Grid item xs={12}>
-              <RadioGroup value={selectedAmount} onChange={handleAmountChange}>
-                <Grid container spacing={2}>
-                  <Grid item xs={6} sm={3}>
-                    <Paper
-                      elevation={3}
-                      style={{
-                        padding: "16px",
-                        textAlign: "center",
-                        minHeight: "150px",
-                      }}
-                    >
-                      <FormControlLabel
-                        value="100"
-                        control={<Radio />}
-                        label="$100"
-                        style={{ width: "100%" }}
-                      />
-                    </Paper>
-                  </Grid>
-                  <Grid item xs={6} sm={3}>
-                    <Paper
-                      elevation={3}
-                      style={{
-                        padding: "16px",
-                        textAlign: "center",
-                        minHeight: "150px",
-                      }}
-                    >
-                      <FormControlLabel
-                        value="200"
-                        control={<Radio />}
-                        label="$200"
-                        style={{ width: "100%" }}
-                      />
-                    </Paper>
-                  </Grid>
-                  <Grid item xs={6} sm={3}>
-                    <Paper
-                      elevation={3}
-                      style={{
-                        padding: "16px",
-                        textAlign: "center",
-                        minHeight: "150px",
-                      }}
-                    >
-                      <FormControlLabel
-                        value="500"
-                        control={<Radio />}
-                        label="$500"
-                        style={{ width: "100%" }}
-                      />
-                    </Paper>
-                  </Grid>
-
-                  <Grid item xs={6} sm={3}>
-                    <Paper
-                      elevation={3}
-                      style={{
-                        padding: "16px",
-                        textAlign: "center",
-                        minHeight: "150px",
-                      }}
-                    >
-                      <FormControlLabel
-                        value="custom"
-                        control={<Radio />}
-                        label="Custom"
-                        style={{ width: "100%" }}
-                      />
-                      {selectedAmount === "custom" && (
-                        <TextField
-                          fullWidth
-                          label="Amount"
-                          variant="outlined"
-                          value={customAmount}
-                          onChange={handleCustomAmountChange}
-                          style={{ marginTop: "8px" }}
-                        />
-                      )}
-                    </Paper>
-                  </Grid>
-                </Grid>
-              </RadioGroup>
-            </Grid>
-          </Grid>
-        </Box>
-
-        <Box display="flex" justifyContent="center">
-          <Button variant="contained" color="primary" onClick={handleDonate}>
-            Donate Now
-          </Button>
-        </Box>
-      </Box> */}
+      </Box>
 
       <Box sx={{ padding: "2em", marginBottom: "2em" }}>
         <Typography
@@ -360,7 +207,7 @@ const Home = () => {
         >
           Nos Rapports d'Activités
         </Typography>
-        <ReusableGrid items={reports} btnText="Voir" />
+        <ReusableGrid items={reports} btnText="Voir" handleEvent={handleOpenPdf} />
       </Box>
     </Stack>
   );

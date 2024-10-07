@@ -206,7 +206,7 @@ export const donates = [
     descriptionAlign: "center",
   },
   {
-    title: "Scholariser un orphelin",
+    title: "Scolariser un orphelin",
     description:
       "Aidez un enfant à accéder à l’éducation en finançant sa scolarité. Offrez un avenir meilleur aujourd'hui.",
     icon: (
@@ -326,4 +326,39 @@ export const appuiPauvre = [
       "Nous facilitons l'accès à de petites sommes d'argent pour permettre aux bénéficiaires de lancer des micro-entreprises et d'améliorer leurs revenus.",
     icon: <HealthAndSafety />,
   },
+];
+
+export const faqData = [
+  {
+    question: "Quels types de programmes proposez-vous ?",
+    answer: "Nous proposons plusieurs programmes axés sur l’autonomisation des jeunes, l’accès à l’éducation, l’assistance aux personnes âgées et bien d'autres initiatives visant à améliorer les conditions de vie des plus vulnérables."
+  },
+  {
+    question: "Comment puis-je contribuer à vos initiatives ?",
+    answer: "Il existe plusieurs façons de contribuer : en faisant un don, en devenant volontaire, ou en participant à nos événements de collecte de fonds. Vous pouvez également partager nos activités sur vos réseaux sociaux pour sensibiliser davantage de personnes."
+  },
+  {
+    question: "Comment puis-je demander de l'aide pour un programme spécifique ?",
+    answer: "Pour demander de l'aide, veuillez visiter la section 'Contact' de notre site et remplir le formulaire. Nous vous répondrons dans les plus brefs délais."
+  },
+  {
+    question: "Êtes-vous une organisation à but lucratif ?",
+    answer: "Non, nous sommes une organisation non gouvernementale (ONG) à but non lucratif. Tous les fonds que nous recevons sont utilisés pour soutenir nos programmes et initiatives."
+  },
+  {
+    question: "Comment puis-je rester informé de vos activités et événements ?",
+    answer: "Vous pouvez vous abonner à notre newsletter via notre site web ou nous suivre sur nos réseaux sociaux pour recevoir les dernières nouvelles et mises à jour sur nos activités."
+  },
+  {
+    question: "Puis-je faire un don en ligne ?",
+    answer: "Oui, vous pouvez faire un don en ligne en visitant notre page de dons. Toutes les contributions, petites ou grandes, sont grandement appréciées et font une différence significative."
+  },
+  {
+    question: "Quels types de projets sont prioritaires pour votre ONG ?",
+    answer: "Nous priorisons les projets qui ont un impact direct sur la vie des personnes vulnérables, notamment ceux liés à l'éducation, à la santé, et à l’autonomisation économique des femmes et des jeunes."
+  },
+  {
+    question: "Comment les fonds collectés sont-ils utilisés ?",
+    answer: "Tous les fonds collectés sont utilisés pour financer nos programmes et initiatives. Nous nous engageons à assurer la transparence de nos finances et à publier régulièrement des rapports sur nos activités."
+  }
 ];

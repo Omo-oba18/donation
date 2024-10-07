@@ -25,9 +25,9 @@ const Title = (props) => {
         textAlign: "center",
         display: "inline-flex",
         alignItems: "center",
-        justifyContent:'center',
+        justifyContent: "center",
         fontFamily: "Lemonada, cursif",
-        margin:".5em 0"
+        margin: ".5em 0",
       }}
     >
       {props.text}

@@ -1,8 +1,25 @@
-@import url('https://fonts.googleapis.com/css2?family=Baskervville+SC&family=Kaushan+Script&family=Lemonada:wght@300..700&family=Major+Mono+Display&family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Baskervville+SC&family=Kaushan+Script&family=Lemonada:wght@300..700&family=Major+Mono+Display&family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap");
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   font-family: "Mulish", sans-serif;
+}
+
+.video-container {
+  display: flex;
+  justify-content: center;
+}
+
+.video-iframe {
+  width: 40vw;
+  height: 400px;
+}
+
+@media (max-width: 768px) {
+  .video-iframe {
+    width: 90vw; /* Optional: set a max-width for mobile */
+    height: 300px;
+  }
 }

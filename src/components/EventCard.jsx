@@ -7,7 +7,7 @@ import AccessTimeIcon from "@mui/icons-material/AccessTime";
 const EventCard = ({ date, month, title, location, time }) => {
   return (
     <Stack
-      direction={{ xs: "column", sm: "row" }}
+      direction="row"
       sx={{ display: "flex", alignItems: "center", marginBottom: "1em" }}
     >
       <Stack

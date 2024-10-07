@@ -11,8 +11,9 @@ const ReusableGrid = ({
   btnColor = "#4ACA4D !important",
   btnText = "default",
   hideBorder = false,
-  txtColor = "#fff",
+  textColor = "#fff",
   isRounded = true,
+  handleEvent,
 }) => {
   const itemCount = items.length;
 
@@ -71,7 +72,11 @@ const ReusableGrid = ({
               {item.description}
             </Typography>
             <Box display="flex" justifyContent="center">
-              <StyledButton textColor={txtColor} bgc={btnColor}>
+              <StyledButton
+                txtColor={textColor}
+                bgc={btnColor}
+                onClick={handleEvent}
+              >
                 {btnText}
               </StyledButton>
             </Box>

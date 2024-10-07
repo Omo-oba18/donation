@@ -19,8 +19,15 @@ import emailIcon from "../assets/icons/email.svg";
 import phoneIcon from "../assets/icons/phone.svg";
 import locationIcon from "../assets/icons/location.svg";
 import infoIcon from "../assets/icons/info.svg";
+import DonationModalContent from "./DonationModal";
+import { useModal } from "../provider/ModalProvider";
 
 const Footer = () => {
+  const { openModal } = useModal();
+
+  const handleDonateClick = () => {
+    openModal(<DonationModalContent />); // Pass the content of the modal
+  };
   return (
     <Box
       sx={{
@@ -63,11 +70,7 @@ const Footer = () => {
               femmes en difficulté. Notre mission : promouvoir l'accès à
               l'éducation, combattre la pauvreté et encourager la solidarité.
             </Typography>
-            <StyledButton
-              component={Link}
-              to="/contactez-nous"
-              bgc="#4ACA4D !important"
-            >
+            <StyledButton onClick={handleDonateClick} bgc="#4ACA4D !important">
               Faire un don
             </StyledButton>
           </Stack>

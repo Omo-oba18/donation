@@ -20,7 +20,7 @@ const ParrainerEnfant = () => {
         }}
         data-aos="fade-down"
       >
-        <Box sx={{ width: "40%" }}>
+        <Box sx={{ width: {sm:"40%"} }}>
           <Typography
             variant="h1"
             sx={{ fontSize: "50px", textAlign: "left", marginBottom: "1rem" }}
@@ -37,7 +37,7 @@ const ParrainerEnfant = () => {
             d’espoir.
           </Typography>
         </Box>
-        <Box sx={{ width: "40%" }}>
+        <Box sx={{ width: {sm:"40%"} }}>
           <TextField
             id="nom"
             label="Nom"

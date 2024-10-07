@@ -2,7 +2,6 @@ import {
   Box,
   ImageList,
   ImageListItem,
-  ImageListItemBar,
   Stack,
   Typography,
 } from "@mui/material";
@@ -68,7 +67,6 @@ const Galerie = () => {
                 alt={item.title}
                 loading="lazy"
               />
-              <ImageListItemBar position="below" title={item.author} />
             </ImageListItem>
           ))}
         </ImageList>
