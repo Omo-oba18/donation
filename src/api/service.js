@@ -169,7 +169,7 @@ export const objectives = [
   {
     title: "Assurer la couverture des besoins essentiels",
     description:
-      "Assurer la couverture des besoins essentiels pour le suivi, principalement la sécurité alimentaire avec une implication effective des partenaires financiers.",
+      "Assurer la couverture des besoins essentiels pour la survie, principalement la sécurité alimentaire avec une implication effective des partenaires financiers.",
     icon: <LocalDining color="primary" fontSize="large" />,
   },
   {
